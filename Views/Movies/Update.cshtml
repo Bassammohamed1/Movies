@@ -1,0 +1,55 @@
+﻿@using Movies.Data.Consts;
+@model MovieViewModel
+@{
+    ViewData["Title"] = "Update Movie";
+}
+<form method="post" enctype="multipart/form-data">
+    <div class="border p-3 mt-4">
+        <div class="row pb-2">
+            <h2 class="text-primary">Update Movie</h2>
+            <hr />
+        </div>
+        <div class="mb-3">
+            <label asp-for="Name"></label>
+            <input asp-for="Name" class="form-control" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Bio"></label>
+            <input asp-for="Bio" class="form-control" />
+            <span asp-validation-for="Bio" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="price"></label>
+            <input asp-for="price" class="form-control" />
+            <span asp-validation-for="price" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label>Image</label>
+            <input asp-for="clientFile" class="form-control" />
+            <span asp-validation-for="clientFile" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="MoiveCategory"></label>
+            <select asp-for="MoiveCategory" class="form-select" asp-items="Html.GetEnumSelectList<MoiveCategory>()"></select>
+            <span asp-validation-for="MoiveCategory"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="ProducerId"></label>
+            <select asp-for="ProducerId" class="form-select" asp-items="@ViewBag.MyBag1"></select>
+            <span asp-validation-for="ProducerId"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="ActorsId"></label>
+            <select asp-for="ActorsId" class="form-select" asp-items="@ViewBag.MyBag2" multiple></select>
+            <span asp-validation-for="ActorsId"></span>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:150px">Save</button>
+        <a asp-action="Index" asp-controller="Movies" class="btn btn-secondary" style="width:150px">
+            Back To Movies
+        </a>
+    </div>
+</form>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

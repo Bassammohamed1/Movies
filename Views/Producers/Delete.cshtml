@@ -1,0 +1,15 @@
+﻿@model Producer
+@{
+    ViewData["Title"] = "Delete Producer";
+}
+<form method="post">
+    <div class="window" style="background-color:antiquewhite;padding:20px;">
+        <p3>Are you sure you want to delete this Producer</p3>
+        <div class="buttons" style="padding-top:10px;">
+            <button type="submit" class="btn btn-primary" style="width:150px">Okay</button>
+            <a asp-controller="Producers" asp-action="Index" class="btn btn-secondary" style="width:150px">
+                Back to Actors
+            </a>
+        </div>
+    </div>
+</form>
