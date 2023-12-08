@@ -10,9 +10,9 @@ namespace Movies.Models
         [Key]
         public int Id { get; set; }
         [Required, MaxLength(100)]
-        public string? Name { get; set; }
+        public string Name { get; set; }
         [Required]
-        public string? Bio { get; set; }
+        public string Bio { get; set; }
         [Required]
         public double price { get; set; }
         [Required, DisplayName("Category")]
