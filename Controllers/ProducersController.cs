@@ -30,6 +30,12 @@ namespace Movies.Controllers
         {
             if (ModelState.IsValid)
             {
+                if (producer.clientFile != null)
+                {
+                    var stream = new MemoryStream();
+                    producer.clientFile.CopyTo(stream);
+                    producer.dbImage = stream.ToArray();
+                }
                 _unitOfWork.Producers.Add(producer);
                 _unitOfWork.Commit();
                 return RedirectToAction(nameof(Index));
@@ -54,6 +60,12 @@ namespace Movies.Controllers
         {
             if (ModelState.IsValid)
             {
+                if (producer.clientFile != null)
+                {
+                    var stream = new MemoryStream();
+                    producer.clientFile.CopyTo(stream);
+                    producer.dbImage = stream.ToArray();
+                }
                 _unitOfWork.Producers.Update(producer);
                 _unitOfWork.Commit();
                 return RedirectToAction(nameof(Index));

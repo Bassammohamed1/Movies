@@ -2,7 +2,7 @@
 @{
     ViewData["Title"] = "Update Actor";
 }
-<form method="post">
+<form method="post" enctype="multipart/form-data">
     <div class="border p-3 mt-4">
         <div class="row pb-2">
             <h2 class="text-primary">Update Actor</h2>
@@ -19,9 +19,9 @@
             <span asp-validation-for="Bio" class="text-danger"></span>
         </div>
         <div class="mb-3">
-            <label asp-for="Src"></label>
-            <input asp-for="Src" class="form-control" />
-            <span asp-validation-for="Src" class="text-danger"></span>
+            <label>Image</label>
+            <input type="file" asp-for="clientFile" class="form-control" />
+            <span asp-validation-for="clientFile" class="text-danger"></span>
         </div>
         <button type="submit" class="btn btn-primary" style="width:150px">Save</button>
         <a asp-action="Index" asp-controller="Actors" class="btn btn-secondary" style="width:150px">
