@@ -27,6 +27,7 @@ namespace Movies.Controllers
             SelectList List = new SelectList(actors, "Id", "Name");
             ViewBag.MyBag2 = List;
         }
+        [AllowAnonymous]
         public IActionResult Index()
         {
             IEnumerable<Movie> result = _unitOfWork.Movies.GetAll();
@@ -119,6 +120,7 @@ namespace Movies.Controllers
             _unitOfWork.Commit();
             return RedirectToAction(nameof(Index));
         }
+        [AllowAnonymous]
         public IActionResult Details(int id)
         {
             if (id == null || id == 0)
