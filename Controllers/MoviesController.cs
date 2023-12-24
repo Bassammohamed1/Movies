@@ -120,7 +120,6 @@ namespace Movies.Controllers
             _unitOfWork.Commit();
             return RedirectToAction(nameof(Index));
         }
-        [AllowAnonymous]
         public IActionResult Details(int id)
         {
             if (id == null || id == 0)

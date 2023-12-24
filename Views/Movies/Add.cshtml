@@ -1,5 +1,4 @@
-﻿@using Movies.Data.Consts;
-@model MovieViewModel
+﻿@model MovieViewModel
 @{
     ViewData["Title"] = "Add Movie";
 }
@@ -44,8 +43,8 @@
             <select asp-for="ActorsId" class="form-select" asp-items="@ViewBag.MyBag2" multiple></select>
             <span asp-validation-for="ActorsId"></span>
         </div>
-        <button type="submit" class="btn btn-primary" style="width:150px">Save</button>
-        <a asp-action="Index" asp-controller="Movies" class="btn btn-secondary" style="width:150px">
+        <button type="submit" class="btn btn-primary">Save</button>
+        <a asp-action="Index" asp-controller="Movies" class="btn btn-secondary">
             Back To Movies
         </a>
     </div>
