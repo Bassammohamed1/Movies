@@ -1,22 +1,68 @@
+.Title {
+    text-align: center;
+    padding-top: 50px;
+    font-size: 50px;
+}
+
+.items {
+    display: flex;
+    padding-top: 50px;
+}
+
+.items2 {
+    display: flex;
+    flex-direction: column;
+}
+
+.PhotoDetails {
+    width: 30%;
+}
+
+.Paragraph {
+    padding-top: 50px;
+    padding-left: 50px;
+    font-size: 25px;
+}
+
+.Series {
+    margin-top: 5px;
+    margin-left: 50px;
+}
+
+.Header {
+    padding-top: 5%;
+    padding-left: 33%;
+    padding-bottom: 2%;
+}
+
+.Photos {
+    padding-left: 50px;
+   
+}
+
+.AllPhotos {
+    display: flex;
+}
+
 html {
-  font-size: 14px;
+    font-size: 14px;
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        font-size: 16px;
+    }
 }
 
 .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
 }
 
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
 }

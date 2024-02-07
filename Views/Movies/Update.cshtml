@@ -29,9 +29,19 @@
             <span asp-validation-for="clientFile" class="text-danger"></span>
         </div>
         <div class="mb-3">
-            <label asp-for="MoiveCategory"></label>
-            <select asp-for="MoiveCategory" class="form-select" asp-items="Html.GetEnumSelectList<MoiveCategory>()"></select>
-            <span asp-validation-for="MoiveCategory"></span>
+            <label asp-for="MovieCategory"></label>
+            <select asp-for="MovieCategory" class="form-select" asp-items="Html.GetEnumSelectList<MovieCategory>()"></select>
+            <span asp-validation-for="MovieCategory"></span>
+        </div>
+        <div class="mb-3">
+            <input asp-for="IsSeries" class="form-check-input" />
+            <label asp-for="IsSeries"></label>
+            <span asp-validation-for="IsSeries" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="MoviePart"></label>
+            <input asp-for="MoviePart" class="form-control" />
+            <span asp-validation-for="MoviePart" class="text-danger"></span>
         </div>
         <div class="mb-3">
             <label asp-for="ProducerId"></label>

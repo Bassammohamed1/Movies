@@ -16,6 +16,9 @@
                 <th scope="col">
                     Name
                 </th>
+                <th scope="col">
+                    Actions
+                </th>
             </tr>
         </thead>
         <tbody>
@@ -24,6 +27,9 @@
                 <tr class="table-light">
                     <td scope="row">
                         @item.Name
+                    </td>
+                    <td scope="row">
+                        <a class="btn btn-primary" asp-action="ManagePermissions" asp-route-roleId="@item.Id">Manage Permissions</a>
                     </td>
                 </tr>
             }

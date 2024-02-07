@@ -25,7 +25,8 @@ namespace Movies.Repository
                 Bio = data.Bio,
                 dbImage = data.dbImage,
                 price = data.price,
-                MoiveCategory = data.MoiveCategory,
+                MoiveCategory = data.MovieCategory,
+                IsSeries = data.IsSeries,
                 ProducerId = data.ProducerId,
             };
             _context.Movies.Add(movie);
@@ -48,7 +49,8 @@ namespace Movies.Repository
             movie.Bio = data.Bio;
             movie.dbImage = data.dbImage;
             movie.price = data.price;
-            movie.MoiveCategory = data.MoiveCategory;
+            movie.MoiveCategory = data.MovieCategory;
+            movie.IsSeries = data.IsSeries;
             movie.ProducerId = data.ProducerId;
             _context.SaveChanges();
             foreach (var i in data.ActorsId)

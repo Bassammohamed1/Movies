@@ -1,4 +1,4 @@
-﻿using Movies.Areas.Cart.Models;
+﻿using Movies.CartModels;
 
 namespace Movies.Repository.Interfaces
 {

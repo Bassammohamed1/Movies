@@ -1,58 +1,34 @@
-﻿@model Movie
+﻿@model MoviesDetailsViewModel
 @{
-    ViewData["Title"] = "Movie Details";
+    ViewData["Title"] = Model.Movie.Name;
 }
 
-<div class="container p-3">
-    <div class="row pt-4">
-        <div class="col-6">
-            <h2 class="text-primary">@Model.Name</h2>
+<div class="row">
+    <div class="items">
+        <img class="PhotoDetails" src="@Model.Movie.imageSrc" alt="@Model.Movie.Name" />
+        <div class="items2">
+            <div class="Title">@Model.Movie.Name @Model.Movie.MoviePart</div>
+            <p class="Paragraph">@Model.Movie.Bio</p>
+            <a class="btn btn-primary text-white"
+               asp-controller="Orders"
+               asp-action="AddModelToShoppingCart"
+               asp-route-id="@Model.Movie.Id">
+                <i class="bi bi-cart-plus"></i> Add to Cart (Price @Model.Movie.price.ToString("c"))
+            </a>
         </div>
     </div>
-    <table class="table table-hover">
-        <thead>
-            <tr>
-                <th scope="col">
-                    Image
-                </th>
-                <th scope="col">
-                    Name
-                </th>
-                <th scope="col">
-                    Producer
-                </th>
-                <th scope="col">
-                    Bio
-                </th>
-                <th scope="col">
-                    Price
-                </th>
-                <th scope="col">
-                    Category
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr class="table-primary">
-                <td scope="row">
-                    <img class="rounded-circle" src="@Model.imageSrc" alt="@Model.Name" style="width:170px; height:170px; max-width:100%" />
-                </td>
-                <td scope="row">
-                    @Model.Name
-                </td>
-                <td scope="row">
-                    @Model.Producer.Name
-                </td>
-                <td width="50%">
-                    @Model.Bio
-                </td>
-                <td scope="row">
-                    @Model.price$
-                </td>
-                <td scope="row">
-                    @Model.MoiveCategory
-                </td>
-            </tr>
-        </tbody>
-    </table>
 </div>
+@if (Model.Movies is not null)
+{
+    <div class="Series">
+        <div class="Header"><h2>Parts Of @Model.Movie.Name</h2></div>
+
+        @foreach (var item in Model.Movies)
+        {
+            <a asp-action="Details" asp-route-id="@item.Id" class="Photos">
+                <img src="@item.imageSrc" alt="@item.Name" style="width:170px; height:170px; max-width:100%" />
+            </a>
+            <h2>@item.Name @item.MoviePart</h2>
+        }
+    </div>
+}

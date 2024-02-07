@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Movies.Areas.Cart.Models;
+using Movies.CartModels;
 using Movies.Models;
 using Movies.Repository.Interfaces;
 

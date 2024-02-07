@@ -73,7 +73,8 @@ namespace Movies.Controllers
                 Bio = movie.Bio,
                 dbImage = movie.dbImage,
                 price = movie.price,
-                MoiveCategory = movie.MoiveCategory,
+                MovieCategory = movie.MoiveCategory,
+                IsSeries = movie.IsSeries,
                 ProducerId = movie.ProducerId,
                 ActorsId = movie.ActorMovies.Select(a => a.ActorId).ToList()
             };
@@ -127,7 +128,10 @@ namespace Movies.Controllers
             var movie = _unitOfWork.Movies.GetMovieById(id);
             if (movie == null)
                 return NotFound();
-            return View(movie);
+            var data = _unitOfWork.Movies.GetAll();
+            var movies = data.Where(m => m.Name.Contains(movie.Name, StringComparison.OrdinalIgnoreCase) && m.IsSeries);
+            var Data = new MoviesDetailsViewModel() { Movie = movie, Movies = movies };
+            return View(Data);
         }
         [AllowAnonymous]
         public IActionResult Filter(string searchString)

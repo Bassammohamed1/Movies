@@ -22,7 +22,7 @@
                         <div class="card-header text-white bg-primary">
                             <p class="card-text">
                                 <h5 class="card-title">
-                                    @item.Name
+                                    @item.Name @item.MoviePart
                                     @if(User.IsInRole("Admin"))
                                     {
                                         <a class="text-white float-right" asp-action="Update" asp-route-id="@item.Id"><i class="bi bi-pencil-square"></i></a>

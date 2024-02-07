@@ -16,7 +16,7 @@ namespace Movies.Models
         [Required]
         public double price { get; set; }
         [Required, DisplayName("Category")]
-        public MoiveCategory MoiveCategory { get; set; }
+        public MovieCategory MovieCategory { get; set; }
         [NotMapped]
         public IFormFile clientFile { get; set; }
         public byte[]? dbImage { get; set; }
@@ -24,5 +24,8 @@ namespace Movies.Models
         public int ProducerId { get; set; }
         [DisplayName("Actors")]
         public List<int> ActorsId { get; set; }
+        [DisplayName("Is Series")]
+        public bool IsSeries { get; set; }
+        public int? MoviePart { get; set; }
     }
 }

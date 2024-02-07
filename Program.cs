@@ -5,6 +5,8 @@ using Movies.Repository.Interfaces;
 using Microsoft.AspNetCore.Identity;
 using Movies.Data.Consts;
 using Movies.Data.Cart;
+using Microsoft.AspNetCore.Authorization;
+using Movies.Filter;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,9 +18,15 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
     .AddRoles<IdentityRole>().AddEntityFrameworkStores<AppDbContext>();
 builder.Services.AddTransient<IUnitOfWork, UnitOfWork>();
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-builder.Services.AddScoped(c=>ShoppingCart.GetShoppingCart(c));
+builder.Services.AddScoped(c => ShoppingCart.GetShoppingCart(c));
 builder.Services.AddSession();
 builder.Services.AddMemoryCache();
+/*builder.Services.AddSingleton<IAuthorizationPolicyProvider, PermissionPolicyProvider>();
+builder.Services.AddScoped<IAuthorizationHandler, PermissionAuthorizationHandler>();
+builder.Services.Configure<SecurityStampValidatorOptions>(options =>
+{
+    options.ValidationInterval = TimeSpan.Zero;
+});*/
 
 var app = builder.Build();
 

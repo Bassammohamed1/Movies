@@ -1,6 +1,6 @@
 ﻿using Movies.Models;
 
-namespace Movies.Areas.Cart.Models
+namespace Movies.CartModels
 {
     public class ShoppingCartItem
     {

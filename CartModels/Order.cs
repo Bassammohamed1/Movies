@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using Movies.Models;
 
-namespace Movies.Areas.Cart.Models
+namespace Movies.CartModels
 {
     public class Order
     {

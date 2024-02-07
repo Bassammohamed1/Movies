@@ -1,6 +1,6 @@
 ﻿namespace Movies.Data.Consts
 {
-    public enum MoiveCategory
+    public enum MovieCategory
     {
         Action, Drama, Comedy, Romance
     }

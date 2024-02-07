@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using Movies.Areas.Cart.Models;
+using Movies.CartModels;
 
 namespace Movies.Models
 {

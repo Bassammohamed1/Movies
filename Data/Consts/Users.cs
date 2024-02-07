@@ -9,7 +9,7 @@ namespace Movies.Data.Consts
         {
             var User = new IdentityUser
             {
-                UserName = "user@gmail.com",
+                UserName = "User@gmail.com",
                 Email = "user@gmail.com"
             };
             await userManager.CreateAsync(User, "Ba$$am3324");
@@ -19,7 +19,7 @@ namespace Movies.Data.Consts
         {
             var User = new IdentityUser
             {
-                UserName = "admin@gmail.com",
+                UserName = "Admin@gmail.com",
                 Email = "admin@gmail.com"
             };
             await userManager.CreateAsync(User, "Ba$$am3324");
