@@ -7,7 +7,6 @@ using Movies.Repository.Interfaces;
 
 namespace Movies.Controllers
 {
-    [Authorize(Roles = "User")]
     public class MoviesController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
@@ -27,12 +26,13 @@ namespace Movies.Controllers
             SelectList List = new SelectList(actors, "Id", "Name");
             ViewBag.MyBag2 = List;
         }
-        [AllowAnonymous]
+        [Authorize("Permission.Movies.View")]
         public IActionResult Index()
         {
             IEnumerable<Movie> result = _unitOfWork.Movies.GetAll();
             return View(result);
         }
+        [Authorize("Permission.Movies.Add")]
         public IActionResult Add()
         {
             CreateProducersSelectList();
@@ -59,6 +59,7 @@ namespace Movies.Controllers
                 return View(movie);
             }
         }
+        [Authorize("Permission.Movies.Update")]
         public IActionResult Update(int Id)
         {
             if (Id == null || Id == 0)
@@ -103,6 +104,7 @@ namespace Movies.Controllers
                 return View(movie);
             }
         }
+        [Authorize("Permission.Movies.Delete")]
         public IActionResult Delete(int Id)
         {
 
@@ -121,6 +123,7 @@ namespace Movies.Controllers
             _unitOfWork.Commit();
             return RedirectToAction(nameof(Index));
         }
+        [Authorize("Permission.Movies.Details")]
         public IActionResult Details(int id)
         {
             if (id == null || id == 0)
@@ -133,7 +136,7 @@ namespace Movies.Controllers
             var Data = new MoviesDetailsViewModel() { Movie = movie, Movies = movies };
             return View(Data);
         }
-        [AllowAnonymous]
+        [Authorize("Permission.Movies.Filter")]
         public IActionResult Filter(string searchString)
         {
             var allMovies = _unitOfWork.Movies.GetAll();

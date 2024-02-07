@@ -8,7 +8,6 @@ using Movies.ViewModels;
 
 namespace Movies.Controllers
 {
-    [Authorize(Roles = "Admin")]
     public class UsersController : Controller
     {
         private readonly UserManager<IdentityUser> _userManager;
@@ -18,6 +17,7 @@ namespace Movies.Controllers
             _userManager = userManager;
             _roleManager = roleManager;
         }
+        [Authorize("Permission.Users.View")]
         public async Task<IActionResult> Index()
         {
             var users = await _userManager.Users.Select(user => new UserViewModel
@@ -29,6 +29,7 @@ namespace Movies.Controllers
             }).ToListAsync();
             return View(users);
         }
+        [Authorize("Permission.Users.ManageRoles")]
         public async Task<IActionResult> ManageRoles(string userId)
         {
             var user = await _userManager.FindByIdAsync(userId);

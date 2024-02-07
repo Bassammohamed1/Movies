@@ -5,7 +5,6 @@ using Movies.Repository.Interfaces;
 
 namespace Movies.Controllers
 {
-    [Authorize(Roles ="Admin")]
     public class ActorsController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
@@ -13,11 +12,13 @@ namespace Movies.Controllers
         {
             _unitOfWork = unitOfWork;
         }
+        [Authorize("Permission.Actors.View")]
         public IActionResult Index()
         {
             IEnumerable<Actor> result = _unitOfWork.Actors.GetAll();
             return View(result);
         }
+        [Authorize("Permission.Actors.Add")]
         public IActionResult Add()
         {
             return View();
@@ -43,6 +44,7 @@ namespace Movies.Controllers
                 return View(actor);
             }
         }
+        [Authorize("Permission.Actors.Update")]
         public IActionResult Update(int Id)
         {
             if (Id == null || Id == 0)
@@ -73,6 +75,7 @@ namespace Movies.Controllers
                 return View(actor);
             }
         }
+        [Authorize("Permission.Actors.Delete")]
         public IActionResult Delete(int Id)
         {
             if (Id == null || Id == 0)
