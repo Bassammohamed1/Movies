@@ -18,6 +18,7 @@ using Movies.Models;
 
 namespace Movies.Areas.Identity.Pages.Account
 {
+    [AllowAnonymous]
     public class LoginModel : PageModel
     {
         private readonly SignInManager<IdentityUser> _signInManager;
@@ -85,7 +86,7 @@ namespace Movies.Areas.Identity.Pages.Account
             public bool RememberMe { get; set; }
         }
 
-        public async Task OnGetAsync(string returnUrl = null)
+        public async Task OnGetAsync(string returnUrl)
         {
             if (!string.IsNullOrEmpty(ErrorMessage))
             {
@@ -102,6 +103,8 @@ namespace Movies.Areas.Identity.Pages.Account
             ReturnUrl = returnUrl;
         }
 
+        [HttpPost]
+        [AutoValidateAntiforgeryToken]
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)
         {
             returnUrl ??= Url.Content("~/");

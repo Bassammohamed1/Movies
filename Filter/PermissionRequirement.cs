@@ -2,7 +2,7 @@
 
 namespace Movies.Filter
 {
-    public class PermissionRequirement : IAuthorizationRequirement
+    internal class PermissionRequirement : IAuthorizationRequirement
     {
         public string Permission { get; private set; }
 

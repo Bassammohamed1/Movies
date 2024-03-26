@@ -3,7 +3,7 @@ using Microsoft.Extensions.Options;
 
 namespace Movies.Filter
 {
-    public class PermissionPolicyProvider : IAuthorizationPolicyProvider
+    internal class PermissionPolicyProvider : IAuthorizationPolicyProvider
     {
         public DefaultAuthorizationPolicyProvider FallbackPolicyProvider { get; }
 
@@ -11,6 +11,7 @@ namespace Movies.Filter
         {
             FallbackPolicyProvider = new DefaultAuthorizationPolicyProvider(options);
         }
+
         public Task<AuthorizationPolicy> GetDefaultPolicyAsync()
         {
             return FallbackPolicyProvider.GetDefaultPolicyAsync();
@@ -20,6 +21,7 @@ namespace Movies.Filter
         {
             return FallbackPolicyProvider.GetDefaultPolicyAsync();
         }
+
         public Task<AuthorizationPolicy> GetPolicyAsync(string policyName)
         {
             if (policyName.StartsWith("Permission", StringComparison.OrdinalIgnoreCase))

@@ -2,7 +2,7 @@
 
 namespace Movies.Filter
 {
-    public class PermissionAuthorizationHandler : AuthorizationHandler<PermissionRequirement>
+    internal class PermissionAuthorizationHandler : AuthorizationHandler<PermissionRequirement>
     {
         public PermissionAuthorizationHandler() { }
         protected override async Task HandleRequirementAsync(AuthorizationHandlerContext context, PermissionRequirement requirement)
@@ -10,9 +10,10 @@ namespace Movies.Filter
             if (context.User == null)
                 return;
 
-            var canAccess = context.User.Claims.Any(c => c.Type == "Permission" && c.Value == requirement.Permission && c.Issuer == "LOCAL AUTHORITY");
-
-            if (canAccess)
+            var permissionss = context.User.Claims.Where(x => x.Type == "Permission" &&
+                                                                x.Value == requirement.Permission &&
+                                                                x.Issuer == "LOCAL AUTHORITY");
+            if (permissionss.Any())
             {
                 context.Succeed(requirement);
                 return;
