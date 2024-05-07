@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 
-namespace InfrastructureLayer.Data.Seeds
+namespace InfrastructureLayer.Data.IdentitySeeds
 {
     public static class Users
     {

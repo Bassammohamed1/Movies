@@ -1,6 +1,6 @@
 ﻿using CoreLayer.Interfaces;
 using CoreLayer.Models;
-using CoreLayer.ViewModels;
+using CoreLayer.Models.ViewModels;
 using InfrastructureLayer.Data;
 using Microsoft.EntityFrameworkCore;
 
@@ -25,8 +25,8 @@ namespace InfrastructureLayer.Repository
                 Name = data.Name,
                 Bio = data.Bio,
                 dbImage = data.dbImage,
-                price = data.price,
-                MovieCategory = data.MovieCategory,
+                Price = data.Price,
+                MoiveCategory = data.MovieCategory,
                 IsSeries = data.IsSeries,
                 ProducerId = data.ProducerId,
             };
@@ -49,8 +49,8 @@ namespace InfrastructureLayer.Repository
             movie.Name = data.Name;
             movie.Bio = data.Bio;
             movie.dbImage = data.dbImage;
-            movie.price = data.price;
-            movie.MovieCategory = data.MovieCategory;
+            movie.Price = data.Price;
+            movie.MoiveCategory = data.MovieCategory;
             movie.IsSeries = data.IsSeries;
             movie.ProducerId = data.ProducerId;
             _context.SaveChanges();

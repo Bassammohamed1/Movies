@@ -1,10 +1,9 @@
 ﻿using CoreLayer.Interfaces;
 using CoreLayer.Models;
-using CoreLayer.ViewModels;
+using CoreLayer.Models.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-
 
 namespace PresentationLayer.Controllers
 {
@@ -74,8 +73,8 @@ namespace PresentationLayer.Controllers
                 Name = movie.Name,
                 Bio = movie.Bio,
                 dbImage = movie.dbImage,
-                price = movie.price,
-                MovieCategory = movie.MovieCategory,
+                Price = movie.Price,
+                MovieCategory = movie.MoiveCategory,
                 IsSeries = movie.IsSeries,
                 ProducerId = movie.ProducerId,
                 ActorsId = movie.ActorMovies.Select(a => a.ActorId).ToList()

@@ -2,11 +2,10 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Authorization;
 using CoreLayer.Interfaces;
-using InfrastructureLayer.Repository;
-using InfrastructureLayer.Data.CartItems.Cart;
-using InfrastructureLayer.Data;
-using InfrastructureLayer.Data.Seeds;
 using PresentationLayer.Filter;
+using InfrastructureLayer.Data;
+using InfrastructureLayer.Repository;
+using InfrastructureLayer.Data.IdentitySeeds;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,11 +18,6 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
     .AddRoles<IdentityRole>().AddEntityFrameworkStores<AppDbContext>().AddDefaultUI().AddDefaultTokenProviders();
 
 builder.Services.AddTransient<IUnitOfWork, UnitOfWork>();
-
-builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-builder.Services.AddScoped(c => ShoppingCart.GetShoppingCart(c));
-builder.Services.AddSession();
-builder.Services.AddMemoryCache();
 
 builder.Services.AddSingleton<IAuthorizationPolicyProvider, PermissionPolicyProvider>();
 builder.Services.AddScoped<IAuthorizationHandler, PermissionAuthorizationHandler>();
@@ -55,7 +49,6 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
-app.UseSession();
 
 app.UseAuthorization();
 

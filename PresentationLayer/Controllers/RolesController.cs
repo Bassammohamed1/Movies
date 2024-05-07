@@ -1,5 +1,5 @@
-﻿using CoreLayer.ViewModels;
-using InfrastructureLayer.Data.Seeds;
+﻿using CoreLayer.Models.ViewModels;
+using InfrastructureLayer.Data.IdentitySeeds;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;

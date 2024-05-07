@@ -1,10 +1,10 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel;
+using CoreLayer.Enums;
 using Microsoft.AspNetCore.Http;
-using CoreLayer.Models;
 
-namespace CoreLayer.ViewModels
+namespace CoreLayer.Models.ViewModels
 {
     public class MovieViewModel
     {
@@ -15,7 +15,7 @@ namespace CoreLayer.ViewModels
         [Required]
         public string Bio { get; set; }
         [Required]
-        public double price { get; set; }
+        public double Price { get; set; }
         [Required, DisplayName("Category")]
         public MovieCategory MovieCategory { get; set; }
         [NotMapped]

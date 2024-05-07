@@ -2,6 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel;
 using Microsoft.AspNetCore.Http;
+using CoreLayer.Enums;
 
 namespace CoreLayer.Models
 {
@@ -14,9 +15,9 @@ namespace CoreLayer.Models
         [Required]
         public string Bio { get; set; }
         [Required]
-        public double price { get; set; }
+        public double Price { get; set; }
         [Required, DisplayName("Category")]
-        public MovieCategory MovieCategory { get; set; }
+        public MovieCategory MoiveCategory { get; set; }
         public bool IsSeries { get; set; }
         public int? MoviePart { get; set; }
         [NotMapped]

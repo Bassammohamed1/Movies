@@ -9,12 +9,7 @@
         <div class="items2">
             <div class="Title">@Model.Movie.Name @Model.Movie.MoviePart</div>
             <p class="Paragraph">@Model.Movie.Bio</p>
-            <a class="btn btn-primary text-white"
-               asp-controller="Orders"
-               asp-action="AddModelToShoppingCart"
-               asp-route-id="@Model.Movie.Id">
-                <i class="bi bi-cart-plus"></i> Add to Cart (Price @Model.Movie.price.ToString("c"))
-            </a>
+            <button type="button" onclick="add(@Model.Movie.Id)" class="btn btn-primary">Add to cart</button> (Price @Model.Movie.Price.ToString("c"))
         </div>
     </div>
 </div>

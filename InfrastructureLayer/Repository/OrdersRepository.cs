@@ -1,5 +1,5 @@
-﻿using CoreLayer.CartModels;
-using CoreLayer.Interfaces;
+﻿using CoreLayer.Interfaces;
+using CoreLayer.Models.Cart;
 using InfrastructureLayer.Data;
 using Microsoft.EntityFrameworkCore;
 
@@ -7,46 +7,20 @@ namespace InfrastructureLayer.Repository
 {
     public class OrdersRepository : IOrdersRepository
     {
-        private readonly AppDbContext _context;
-        public OrdersRepository(AppDbContext context)
+        private readonly AppDbContext _db;
+        public OrdersRepository(AppDbContext db)
         {
-            _context = context;
+            _db = db;
         }
-
-        public async Task<List<Order>> GetOrdersByUserIdAndRoleAsync(string userId, string userRole)
+        public async Task<IEnumerable<Order>> UserOrders()
         {
-            var orders = await _context.Orders.Include(n => n.OrderItems).ThenInclude(n => n.Movie).Include(n => n.User).ToListAsync();
-
-            if (userRole != "Admin")
-            {
-                orders = orders.Where(n => n.UserId == userId).ToList();
-            }
-
+            var orders = await _db.Orders
+                            .Include(x => x.OrderStatus)
+                            .Include(x => x.OrderDetail)
+                            .ThenInclude(x => x.Movie)
+                            .ThenInclude(x => x.Producer)
+                            .ToListAsync();
             return orders;
-        }
-
-        public async Task StoreOrderAsync(List<ShoppingCartItem> items, string userId, string userEmailAddress)
-        {
-            var order = new Order()
-            {
-                UserId = userId,
-                Email = userEmailAddress
-            };
-            await _context.Orders.AddAsync(order);
-            await _context.SaveChangesAsync();
-
-            foreach (var item in items)
-            {
-                var orderItem = new OrderItem()
-                {
-                    Amount = item.Amount,
-                    MovieId = item.Movie.Id,
-                    OrderId = order.Id,
-                    Price = item.Movie.price
-                };
-                await _context.OrderItems.AddAsync(orderItem);
-            }
-            await _context.SaveChangesAsync();
         }
     }
 }

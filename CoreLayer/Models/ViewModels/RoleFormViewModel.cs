@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace CoreLayer.ViewModels
+namespace CoreLayer.Models.ViewModels
 {
     public class RoleFormViewModel
     {

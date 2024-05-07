@@ -1,4 +1,4 @@
-﻿using CoreLayer.ViewModels;
+﻿using CoreLayer.Models.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -43,7 +43,6 @@ namespace PresentationLayer.Controllers
                 UserName = user.UserName,
                 Roles = roles.Select(role => new RoleViewModel
                 {
-                    RoleId = role.Id,
                     RoleName = role.Name,
                     IsSelected = _userManager.IsInRoleAsync(user, role.Name).Result
                 }).ToList()

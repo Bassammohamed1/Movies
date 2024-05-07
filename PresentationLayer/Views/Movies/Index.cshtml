@@ -23,7 +23,7 @@
                             <p class="card-text">
                                 <h5 class="card-title">
                                     @item.Name @item.MoviePart
-                                    @if(User.IsInRole("Admin"))
+                                    @if (User.IsInRole("Admin"))
                                     {
                                         <a class="text-white float-right" asp-action="Update" asp-route-id="@item.Id"><i class="bi bi-pencil-square"></i></a>
                                         <a class="text-white float-right" asp-action="Delete" asp-route-Id="@item.Id"><i class="bi bi-trash3"></i></a>
@@ -38,7 +38,7 @@
                     <div class="col-md-6">
                         <div class="card-body">
                             <p class="card-text">@item.Bio</p>
-                            <p class="card-text"><b>Category: </b>@item.MovieCategory</p>
+                            <p class="card-text"><b>Category: </b>@item.MoiveCategory</p>
                         </div>
                     </div>
                     <div class="col-md-12">
@@ -47,12 +47,7 @@
                                 <a class="btn btn-outline-primary float-right" asp-action="Details" asp-route-id="@item.Id">
                                     <i class="bi bi-eye-fill"></i> Details
                                 </a>
-                                <a class="btn btn-primary text-white"
-                               asp-controller="Orders"
-                               asp-action="AddItemToShoppingCart"
-                               asp-route-id="@item.Id">
-                                    <i class="bi bi-cart-plus"></i> Add to Cart (Price @item.price.ToString("c"))
-                                </a>
+                                <button type="button" onclick="add(@item.Id)" class="btn btn-primary">Add to cart</button> (Price @item.Price.ToString("c"))
                             </p>
                         </div>
                     </div>
@@ -61,3 +56,20 @@
         </div>
     }
 </div>
+@section Scripts {
+    <script>
+        async function add(movieId) {
+            try {
+                var response = await fetch(`/Cart/AddItem?movieId=${movieId}`);
+                if (response.status == 200) {
+                    var result = await response.json();
+                    var cartCountEl = document.getElementById("cartCount");
+                    cartCountEl.innerHTML = result;
+                }
+            }
+            catch (err) {
+                console.log(err);
+            }
+        }
+    </script>
+}

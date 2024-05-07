@@ -6,8 +6,9 @@ namespace CoreLayer.Interfaces
     {
         public IRepository<Actor> Actors { get; }
         public IRepository<Producer> Producers { get; }
-        public IOrdersRepository Orders { get; }
         public IMoviesRepository Movies { get; }
+        ICartRepository Carts { get; }
+        IOrdersRepository Orders { get; }
         public void Commit();
     }
 }

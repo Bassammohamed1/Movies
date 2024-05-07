@@ -1,5 +1,4 @@
-﻿using System.ComponentModel;
-
+﻿
 namespace CoreLayer.Models
 {
     public class ActorMovie

@@ -1,6 +1,6 @@
 ﻿using CoreLayer.Models;
 
-namespace CoreLayer.ViewModels
+namespace CoreLayer.Models.ViewModels
 {
     public class MoviesDetailsViewModel
     {

@@ -1,5 +1,5 @@
 ﻿using CoreLayer.Models;
-using CoreLayer.ViewModels;
+using CoreLayer.Models.ViewModels;
 
 namespace CoreLayer.Interfaces
 {
