@@ -13,7 +13,7 @@
         </div>
     </div>
 </div>
-@if (Model.Movies is not null)
+@if (Model.Movies is not null && Model.Movie.IsSeries)
 {
     <div class="Series">
         <div class="Header"><h2>Parts Of @Model.Movie.Name</h2></div>
