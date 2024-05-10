@@ -1,3 +1,21 @@
+.Elements {
+    display: flex;
+    flex-direction: column;
+}
+
+.name {
+    font-size: 16px;
+    padding-left: 50px;
+    padding-top: 5px;
+}
+
+.data {
+    display: flex;
+    flex-direction: row;
+    align-content: space-between;
+    justify-content: center;
+}
+
 .Title {
     text-align: center;
     padding-top: 50px;
@@ -37,7 +55,6 @@
 
 .Photos {
     padding-left: 50px;
-   
 }
 
 .AllPhotos {

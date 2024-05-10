@@ -7,23 +7,68 @@
     <div class="items">
         <img class="PhotoDetails" src="@Model.Movie.imageSrc" alt="@Model.Movie.Name" />
         <div class="items2">
-            <div class="Title">@Model.Movie.Name @Model.Movie.MoviePart</div>
+            <div class="Title">@Model.Movie.Name</div>
             <p class="Paragraph">@Model.Movie.Bio</p>
-            <button type="button" onclick="add(@Model.Movie.Id)" class="btn btn-primary">Add to cart</button> (Price @Model.Movie.Price.ToString("c"))
+            <button type="button" onclick="add(@Model.Movie.Id)" class="btn btn-primary" style="width:25%; margin-left:35%;">Add to cart (Price @Model.Movie.Price.ToString("c"))</button>
         </div>
     </div>
 </div>
-@if (Model.Movies is not null && Model.Movie.IsSeries)
+<div class="row">
+    <div style=" padding-top: 5%;padding-left: 36%;padding-bottom: 2%;">
+        <h2>Producer</h2>
+    </div>
+    <div class="Elements">
+        <a asp-controller="Producers" asp-action="Details" asp-route-id="@Model.Movie.Producer.Id" class="Photos">
+            <img src="@Model.Movie.Producer.imageSrc" alt="@@Model.Movie.Producer.Name" style="width:170px; height:170px; max-width:100%" />
+        </a>
+        <h2 class="name">@Model.Movie.Producer.Name</h2>
+    </div>
+</div>
+<div class="row">
+    <div style=" padding-top: 5%;padding-left: 36%;padding-bottom: 2%;"><h2>Actors</h2></div>
+    <div class="data">
+        @foreach (var item in Model.Movie.ActorMovies)
+        {
+            <div class="Elements">
+                <a asp-controller="Actors" asp-action="Details" asp-route-id="@item.Actor.Id" class="Photos">
+                    <img src="@item.Actor.imageSrc" alt="@item.Actor.Name" style="width:170px; height:170px; max-width:100%" />
+                </a>
+                <h2 class="name">@item.Actor.Name</h2>
+            </div>
+        }
+    </div>
+</div>
+@if (Model.Movie.IsSeries)
 {
     <div class="Series">
         <div class="Header"><h2>Parts Of @Model.Movie.Name</h2></div>
-
-        @foreach (var item in Model.Movies)
-        {
-            <a asp-action="Details" asp-route-id="@item.Id" class="Photos">
-                <img src="@item.imageSrc" alt="@item.Name" style="width:170px; height:170px; max-width:100%" />
-            </a>
-            <h2>@item.Name @item.MoviePart</h2>
-        }
+        <div class="data">
+            @foreach (var item in Model.Movies)
+            {
+                <div class="Elements">
+                    <a asp-action="Details" asp-route-id="@item.Id" class="Photos">
+                        <img src="@item.imageSrc" alt="@item.Name" style="width:170px; height:170px; max-width:100%" />
+                    </a>
+                    <h2 class="name">@item.Name</h2>
+                </div>
+            }
+        </div>
     </div>
+}
+@section Scripts {
+    <script>
+        async function add(movieId) {
+            try {
+                var response = await fetch(`/Cart/AddItem?movieId=${movieId}`);
+                if (response.status == 200) {
+                    var result = await response.json();
+                    var cartCountEl = document.getElementById("cartCount");
+                    cartCountEl.innerHTML = result;
+                }
+            }
+            catch (err) {
+                console.log(err);
+            }
+        }
+    </script>
 }

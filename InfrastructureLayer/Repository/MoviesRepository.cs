@@ -1,10 +1,10 @@
-﻿using CoreLayer.Interfaces;
-using CoreLayer.Models;
-using CoreLayer.Models.ViewModels;
-using InfrastructureLayer.Data;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
+using Movies.Data;
+using Movies.Models;
+using Movies.Models.ViewModels;
+using Movies.Repository.Interfaces;
 
-namespace InfrastructureLayer.Repository
+namespace Movies.Repository
 {
     public class MoviesRepository : Repository<Movie>, IMoviesRepository
     {
@@ -28,6 +28,8 @@ namespace InfrastructureLayer.Repository
                 Price = data.Price,
                 MoiveCategory = data.MovieCategory,
                 IsSeries = data.IsSeries,
+                MoviePart = data.MoviePart,
+                MovieAlias = data.MovieAlias,
                 ProducerId = data.ProducerId,
             };
             _context.Movies.Add(movie);
@@ -52,6 +54,8 @@ namespace InfrastructureLayer.Repository
             movie.Price = data.Price;
             movie.MoiveCategory = data.MovieCategory;
             movie.IsSeries = data.IsSeries;
+            movie.MoviePart = data.MoviePart;
+            movie.MovieAlias = data.MovieAlias;
             movie.ProducerId = data.ProducerId;
             _context.SaveChanges();
             foreach (var i in data.ActorsId)

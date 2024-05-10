@@ -1,9 +1,9 @@
-﻿using CoreLayer.Interfaces;
-using CoreLayer.Models;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Movies.Models;
+using Movies.Repository.Interfaces;
 
-namespace PresentationLayer.Controllers
+namespace Movies.Controllers
 {
     public class ProducersController : Controller
     {
@@ -92,6 +92,15 @@ namespace PresentationLayer.Controllers
             _unitOfWork.Producers.Delete(producer);
             _unitOfWork.Commit();
             return RedirectToAction(nameof(Index));
+        }
+        public IActionResult Details(int id)
+        {
+            if (id == null)
+                return NotFound();
+            var data = _unitOfWork.Producers.GetById(id);
+            if (data == null)
+                return NotFound();
+            return View(data);
         }
     }
 }

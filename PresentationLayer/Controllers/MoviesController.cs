@@ -1,11 +1,11 @@
-﻿using CoreLayer.Interfaces;
-using CoreLayer.Models;
-using CoreLayer.Models.ViewModels;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Movies.Models;
+using Movies.Models.ViewModels;
+using Movies.Repository.Interfaces;
 
-namespace PresentationLayer.Controllers
+namespace Movies.Controllers
 {
     public class MoviesController : Controller
     {
@@ -27,6 +27,7 @@ namespace PresentationLayer.Controllers
             ViewBag.MyBag2 = List;
         }
         [Authorize("Permission.Movies.View")]
+        [AllowAnonymous]
         public IActionResult Index()
         {
             IEnumerable<Movie> result = _unitOfWork.Movies.GetAll();
@@ -76,6 +77,8 @@ namespace PresentationLayer.Controllers
                 Price = movie.Price,
                 MovieCategory = movie.MoiveCategory,
                 IsSeries = movie.IsSeries,
+                MoviePart = movie.MoviePart,
+                MovieAlias = movie.MovieAlias,
                 ProducerId = movie.ProducerId,
                 ActorsId = movie.ActorMovies.Select(a => a.ActorId).ToList()
             };
@@ -132,7 +135,7 @@ namespace PresentationLayer.Controllers
             if (movie == null)
                 return NotFound();
             var data = _unitOfWork.Movies.GetAll();
-            var movies = data.Where(m => m.Name.Contains(movie.Name, StringComparison.OrdinalIgnoreCase) && m.IsSeries);
+            var movies = data.Where(m => m.MovieAlias == movie.MovieAlias && m.IsSeries);
             var Data = new MoviesDetailsViewModel() { Movie = movie, Movies = movies };
             return View(Data);
         }
@@ -143,7 +146,7 @@ namespace PresentationLayer.Controllers
 
             if (!string.IsNullOrEmpty(searchString))
             {
-                var filteredResultNew = allMovies.Where(n => string.Equals(n.Name, searchString, StringComparison.CurrentCultureIgnoreCase) || string.Equals(n.Bio, searchString, StringComparison.CurrentCultureIgnoreCase)).ToList();
+                var filteredResultNew = allMovies.Where(n => string.Equals(n.Name, searchString, StringComparison.CurrentCultureIgnoreCase)).ToList();
 
                 return View("Index", filteredResultNew);
             }

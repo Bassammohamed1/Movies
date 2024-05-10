@@ -1,10 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel;
-using CoreLayer.Enums;
-using Microsoft.AspNetCore.Http;
+using Movies.Data.Enums;
 
-namespace CoreLayer.Models.ViewModels
+namespace Movies.Models.ViewModels
 {
     public class MovieViewModel
     {
@@ -28,5 +27,6 @@ namespace CoreLayer.Models.ViewModels
         [DisplayName("Is Series")]
         public bool IsSeries { get; set; }
         public int? MoviePart { get; set; }
+        public string? MovieAlias { get; set; }
     }
 }

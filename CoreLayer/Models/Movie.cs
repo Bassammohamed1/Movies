@@ -1,10 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel;
-using Microsoft.AspNetCore.Http;
-using CoreLayer.Enums;
+using Movies.Data.Enums;
 
-namespace CoreLayer.Models
+namespace Movies.Models
 {
     public class Movie
     {
@@ -20,6 +19,7 @@ namespace CoreLayer.Models
         public MovieCategory MoiveCategory { get; set; }
         public bool IsSeries { get; set; }
         public int? MoviePart { get; set; }
+        public string? MovieAlias { get; set; }
         [NotMapped]
         public IFormFile clientFile { get; set; }
         public byte[]? dbImage { get; set; }
