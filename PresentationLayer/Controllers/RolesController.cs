@@ -59,6 +59,7 @@ namespace PresentationLayer.Controllers
             allClaims.Add("Permission.Roles.ManagePermissions");
             allClaims.Add("Permission.Users.View");
             allClaims.Add("Permission.Users.ManageRoles");
+            allClaims.Add("Permission.Orders.View");
             var allPermissions = allClaims.Select(p => new PermissionsViewModel { Name = p }).ToList();
             foreach (var permission in allPermissions)
             {

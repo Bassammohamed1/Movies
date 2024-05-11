@@ -1,9 +1,6 @@
 ﻿using CoreLayer.Interfaces;
 using InfrastructureLayer.Data;
-using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
-using static System.Runtime.InteropServices.JavaScript.JSType;
-
 namespace InfrastructureLayer.Repository
 {
     public class Repository<T> : IRepository<T> where T : class

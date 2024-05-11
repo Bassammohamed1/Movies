@@ -1,4 +1,4 @@
-﻿namespace Movies.Data.Enums
+﻿namespace CoreLayer.Enums
 {
     public enum MovieCategory
     {

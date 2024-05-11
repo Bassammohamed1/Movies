@@ -1,9 +1,10 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel;
-using Movies.Data.Enums;
+using Microsoft.AspNetCore.Http;
+using CoreLayer.Enums;
 
-namespace Movies.Models
+namespace CoreLayer.Models
 {
     public class Movie
     {

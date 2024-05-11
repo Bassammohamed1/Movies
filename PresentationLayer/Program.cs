@@ -5,7 +5,6 @@ using CoreLayer.Interfaces;
 using PresentationLayer.Filter;
 using InfrastructureLayer.Data;
 using InfrastructureLayer.Repository;
-using InfrastructureLayer.Data.IdentitySeeds;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -36,14 +35,14 @@ if (!app.Environment.IsDevelopment())
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
-var scope = app.Services.CreateScope();
+/*var scope = app.Services.CreateScope();
 var services = scope.ServiceProvider;
 var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
 var userManager = services.GetRequiredService<UserManager<IdentityUser>>();
 await Roles.CreateUser(roleManager);
 await Roles.CreateAdmin(roleManager);
 await Users.CreateUser(userManager);
-await Users.CreateAdmin(userManager);
+await Users.CreateAdmin(userManager);*/
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();

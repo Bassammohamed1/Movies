@@ -1,11 +1,11 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using CoreLayer.Interfaces;
+using CoreLayer.Models;
+using CoreLayer.Models.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Movies.Models;
-using Movies.Models.ViewModels;
-using Movies.Repository.Interfaces;
 
-namespace Movies.Controllers
+namespace PresentationLayer.Controllers
 {
     public class MoviesController : Controller
     {

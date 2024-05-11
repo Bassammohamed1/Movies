@@ -1,10 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Movies.Data;
-using Movies.Models;
-using Movies.Models.ViewModels;
-using Movies.Repository.Interfaces;
+﻿using CoreLayer.Interfaces;
+using CoreLayer.Models;
+using CoreLayer.Models.ViewModels;
+using InfrastructureLayer.Data;
+using Microsoft.EntityFrameworkCore;
 
-namespace Movies.Repository
+namespace InfrastructureLayer.Repository
 {
     public class MoviesRepository : Repository<Movie>, IMoviesRepository
     {

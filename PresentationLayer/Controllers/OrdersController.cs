@@ -13,7 +13,7 @@ namespace PresentationLayer.Controllers
         {
             _unitOfWork = unitOfWork;
         }
-
+        [Authorize("Permission.Orders.View")]
         public async Task<IActionResult> UserOrders()
         {
             var orders = await _unitOfWork.Orders.UserOrders();
