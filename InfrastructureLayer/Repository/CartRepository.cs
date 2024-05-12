@@ -136,7 +136,7 @@ namespace InfrastructureLayer.Repository
                 {
                     UserId = userId,
                     CreateDate = DateTime.UtcNow,
-                    OrderStatusId = 1//pending
+                    OrderStatusId = 2
                 };
                 _db.Orders.Add(order);
                 _db.SaveChanges();
