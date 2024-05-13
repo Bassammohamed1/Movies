@@ -2,6 +2,14 @@
 @{
     ViewData["Title"] = "Add Movie";
 }
+@{
+    // Get the list of departments from the ViewBag
+    var data = ViewBag.MyBag1 as SelectList;
+    // Clone the original SelectList
+    var modifiedDepartments = new SelectList(data.Items, data.DataValueField, data.DataTextField);
+    // Add a default "Select a department" option at the beginning
+    modifiedDepartments = new SelectList(modifiedDepartments.Prepend(new SelectListItem("Select Producer", "")), "Value", "Text");
+}
 <form method="post" enctype="multipart/form-data">
     <div class="border p-3 mt-4">
         <div class="row pb-2">
